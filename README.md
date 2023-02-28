@@ -1,4 +1,5 @@
 # booking
+A real home-sharing app including authentication, data persistence, payments, and deployment
 ### scripts:
 npm run start
 ## Technologies
