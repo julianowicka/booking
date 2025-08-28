@@ -1,13 +1,32 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const app = (0, express_1.default)();
-const port = 9000;
-const one = 1;
-const two = 2;
-app.get("/", (_req, res) => res.send(`1 + 2 = ${one + two}`));
-app.listen(port);
-console.log(`[app] : http://localhost:${port}`);
+const server_1 = require("@apollo/server");
+const express4_1 = require("@apollo/server/express4");
+const graphql_1 = require("./graphql/");
+function startServer() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const app = (0, express_1.default)();
+        const port = 9000;
+        const server = new server_1.ApolloServer({ typeDefs: graphql_1.typeDefs, resolvers: graphql_1.resolvers });
+        // Start the server
+        yield server.start();
+        // Apply middleware
+        app.use('/api', express_1.default.json(), (0, express4_1.expressMiddleware)(server));
+        app.listen(port);
+        console.log(`[app] : http://localhost:${port}`);
+    });
+}
+startServer().catch(console.error);
