@@ -16,15 +16,24 @@ const express_1 = __importDefault(require("express"));
 const server_1 = require("@apollo/server");
 const express4_1 = require("@apollo/server/express4");
 const graphql_1 = require("./graphql/");
+const database_1 = require("./database");
+const dotenv_1 = __importDefault(require("dotenv"));
+dotenv_1.default.config();
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         const app = (0, express_1.default)();
         const port = 9000;
-        const server = new server_1.ApolloServer({ typeDefs: graphql_1.typeDefs, resolvers: graphql_1.resolvers });
+        const db = yield (0, database_1.connectDatabase)();
+        const server = new server_1.ApolloServer({
+            typeDefs: graphql_1.typeDefs,
+            resolvers: graphql_1.resolvers
+        });
         // Start the server
         yield server.start();
         // Apply middleware
-        app.use('/api', express_1.default.json(), (0, express4_1.expressMiddleware)(server));
+        app.use('/api', express_1.default.json(), (0, express4_1.expressMiddleware)(server, {
+            context: () => __awaiter(this, void 0, void 0, function* () { return ({ db }); })
+        }));
         app.listen(port);
         console.log(`[app] : http://localhost:${port}`);
     });
