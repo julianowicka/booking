@@ -18,6 +18,7 @@ const express4_1 = require("@apollo/server/express4");
 const graphql_1 = require("./graphql/");
 const database_1 = require("./database");
 const dotenv_1 = __importDefault(require("dotenv"));
+// Load environment variables from current directory
 dotenv_1.default.config();
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
