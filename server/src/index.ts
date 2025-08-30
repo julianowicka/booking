@@ -5,6 +5,7 @@ import { typeDefs, resolvers } from './graphql/';
 import { connectDatabase } from './database';
 import dotenv from 'dotenv';
 
+// Load environment variables from current directory
 dotenv.config();
 
 async function startServer() {
