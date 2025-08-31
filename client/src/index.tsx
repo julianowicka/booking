@@ -4,7 +4,7 @@ import { Listings } from "./sections";
 import reportWebVitals from "./reportWebVitals";
 
 const root = createRoot(document.getElementById("root") as HTMLElement);
-root.render(<Listings />);
+root.render(<Listings title="TinyHouse Listings" />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
