@@ -19,7 +19,7 @@ console.log('Using database connection:', {
   DB_NAME
 });
 
-const url = `mongodb+srv://${DB_USER}:${DB_USER_PASSWORD}@${DB_CLUSTER}.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`;
+const url = `mongodb+srv://${DB_USER}:${DB_USER_PASSWORD}@${DB_CLUSTER}.mongodb.net/${DB_NAME}?retryWrites=true&w=majority&ssl=true&sslValidate=false`;
 
 export const connectDatabase = async () => {
   try {
