@@ -1,36 +1,29 @@
 import express from "express";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
-import { typeDefs, resolvers } from './graphql/';
-import { connectDatabase } from './database';
-import dotenv from 'dotenv';
+import { typeDefs } from "./graphql/typeDefs";
+import { resolvers } from "./graphql/resolvers";
+import { connectDatabase } from "./database";
 
-// Load environment variables from current directory
-dotenv.config();
-
-async function startServer() {
-  const app = express();
-  const port = 9000;
-
+const mount = async () => {
   const db = await connectDatabase();
-
-  const server = new ApolloServer({ 
-    typeDefs, 
-    resolvers
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
   });
+  const app = express();
 
-  // Start the server
   await server.start();
 
-  // Apply middleware
-  app.use('/api', express.json(), expressMiddleware(server, {
+  app.use(express.json());
+  app.use("/api", expressMiddleware(server, {
     context: async () => ({ db })
   }));
 
-  app.listen(port);
+  app.listen(9000);
+  console.log(`🚀 Server ready at http://localhost:9000`);
+  console.log(`📊 GraphQL Playground available at http://localhost:9000/api`);
+};
 
-  console.log(`[app] : http://localhost:${port}`);
-}
-
-startServer().catch(console.error);
+mount().catch(console.error);
 
