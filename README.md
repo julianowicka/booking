@@ -1,5 +1,13 @@
 # Booking Application
 
+Aplikacja służy do rezerwacji, umożliwiając użytkownikom przeglądanie i zarządzanie terminami.
+
+W środku znajdziesz GraphQL API oparte o Apollo Server, które daje ogromną elastyczność w komunikacji między frontendem a backendem.
+
+📦 Dane trzymane są w MongoDB Atlas, a cały projekt został napisany w TypeScript, co sprawia, że kod jest czysty i bezpieczny.
+
+✨ Frontend to React z hookami, hot‑reloading i nowoczesne komponenty, dzięki czemu aplikacja działa szybko i przyjemnie.
+
 A full-stack booking application built with React, Node.js, Express, GraphQL, Apollo, MongoDB, and TypeScript.
 
 ## Project Structure
@@ -107,16 +115,6 @@ The React app will be available at `http://localhost:3000`
 - Build: `npm run build`
 - Tests: `npm test`
 
-## Module Progress
-
-- ✅ **Module 1**: Server setup with Express and GraphQL
-- ✅ **Module 2**: GraphQL schema and resolvers
-- ✅ **Module 3**: MongoDB integration and data seeding
-- ✅ **Module 4**: GraphQL resolver modularization
-- 🔄 **Module 5**: React client setup (Current)
-- ⏳ **Module 6**: React components and hooks
-- ⏳ **Module 7**: Apollo Client integration
-- ⏳ **Module 8**: Full-stack application completion
 
 ## Security Notes
 
