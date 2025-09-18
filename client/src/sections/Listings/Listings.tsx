@@ -1,6 +1,6 @@
 import React from "react";
 import { gql } from "@apollo/client";
-import { useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client/react";
 import {
   DeleteListingData,
   DeleteListingVariables,
@@ -52,7 +52,7 @@ export const Listings = ({ title }: Props) => {
 
   const listingsList = listings ? (
     <ul>
-      {listings.map(listing => {
+      {listings.map((listing: any) => {
         return (
           <li key={listing.id}>
             {listing.title}{" "}
