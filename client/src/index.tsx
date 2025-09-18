@@ -1,11 +1,15 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from "@apollo/client";
 import { Listings } from "./sections";
 import reportWebVitals from "./reportWebVitals";
 
+const httpLink = createHttpLink({
+  uri: "/api"
+});
+
 const client = new ApolloClient({
-  uri: "/api",
+  link: httpLink,
   cache: new InMemoryCache()
 });
 
