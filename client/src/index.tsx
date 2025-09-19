@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { ApolloProvider } from "@apollo/client/react";
 import { Listings } from "./sections";
 import reportWebVitals from "./reportWebVitals";
+import "./styles/index.css";
 
 const httpLink = createHttpLink({
   uri: "/api"

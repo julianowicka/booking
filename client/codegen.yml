@@ -20,3 +20,5 @@ generates:
       inputMaybeValue: T | null | undefined
       useTypeImports: true
       dedupeOperationSuffix: true
+      omitOperationSuffix: false
+      namingConvention: keep

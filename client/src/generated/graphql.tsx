@@ -37,7 +37,7 @@ export type Mutation = {
 };
 
 
-export type MutationDeleteListingArgs = {
+export type MutationdeleteListingArgs = {
   id: Scalars['ID']['input'];
 };
 
