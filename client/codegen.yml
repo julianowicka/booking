@@ -18,3 +18,5 @@ generates:
       avoidOptionals: false
       maybeValue: T | null
       inputMaybeValue: T | null | undefined
+      useTypeImports: true
+      dedupeOperationSuffix: true
