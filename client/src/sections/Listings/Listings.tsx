@@ -2,10 +2,11 @@ import React from "react";
 import { gql } from "@apollo/client";
 import { useQuery, useMutation } from "@apollo/client/react";
 import {
-  DeleteListingData,
-  DeleteListingVariables,
-  ListingsData
-} from "./types";
+  ListingsQuery,
+  ListingsQueryVariables,
+  DeleteListingMutation,
+  DeleteListingMutationVariables
+} from "../../generated/graphql";
 
 const LISTINGS = gql`
   query Listings {
@@ -36,12 +37,12 @@ interface Props {
 }
 
 export const Listings = ({ title }: Props) => {
-  const { data, loading, error, refetch } = useQuery<ListingsData>(LISTINGS);
+  const { data, loading, error, refetch } = useQuery<ListingsQuery, ListingsQueryVariables>(LISTINGS);
 
   const [
     deleteListing,
     { loading: deleteListingLoading, error: deleteListingError }
-  ] = useMutation<DeleteListingData, DeleteListingVariables>(DELETE_LISTING);
+  ] = useMutation<DeleteListingMutation, DeleteListingMutationVariables>(DELETE_LISTING);
 
   const handleDeleteListing = async (id: string) => {
     await deleteListing({ variables: { id } });

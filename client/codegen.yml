@@ -1,0 +1,17 @@
+overwrite: true
+schema: "http://localhost:9000/api"
+documents: "src/**/*.tsx"
+generates:
+  src/generated/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHooks: true
+      withComponent: false
+      withHOC: false
+      apolloReactHooksImportFrom: "@apollo/client/react"
+      skipTypename: false
+      withResultType: false
+      withVariablesType: true
