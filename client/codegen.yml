@@ -15,3 +15,6 @@ generates:
       skipTypename: false
       withResultType: false
       withVariablesType: true
+      avoidOptionals: false
+      maybeValue: T | null
+      inputMaybeValue: T | null | undefined
